@@ -1,17 +1,23 @@
-# mobile_banking
+# Flutter frontend
 
-A new Flutter project.
+Frontend Flutter untuk aplikasi mobile banking. Panduan setup lengkap, termasuk persiapan backend dan konfigurasi alamat API, tersedia di [README utama](../README.md).
 
-## Getting Started
+## Menjalankan aplikasi
 
-This project is a starting point for a Flutter application.
+Pastikan backend sudah berjalan di `http://localhost:8080`, lalu dari folder `frontend`:
 
-A few resources to get you started if this is your first Flutter project:
+```bash
+flutter pub get
+flutter devices
+flutter run
+```
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+Android Emulator menggunakan URL API default `http://10.0.2.2:8080/api`. Untuk perangkat Android fisik, ubah base URL di `lib/config/api_config.dart` ke alamat IP LAN komputer yang menjalankan backend.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Build APK
+
+```bash
+flutter build apk --release
+```
+
+APK release tersedia di `build/app/outputs/flutter-apk/app-release.apk`. Build release membutuhkan endpoint HTTPS dan signing key sendiri untuk distribusi; konfigurasi signing debug yang ada hanya untuk pengujian.
