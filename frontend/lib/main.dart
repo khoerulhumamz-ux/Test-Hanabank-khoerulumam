@@ -122,7 +122,7 @@ class _HistoryPageState extends State<HistoryPage> {
   @override void initState(){super.initState();load();}
   @override Widget build(BuildContext context)=>Scaffold(appBar:AppBar(title:const Text('Riwayat transaksi')),body:loading?const Center(child:CircularProgressIndicator()):items.isEmpty?const Center(child:Text('Belum ada transaksi')):RefreshIndicator(onRefresh:load,child:ListView.separated(padding:const EdgeInsets.all(12),itemCount:items.length,separatorBuilder:(_,__)=>const SizedBox(height:8),itemBuilder:(context,i){
     final t=Map<String,dynamic>.from(items[i] as Map);
-    return Card(child:ListTile(leading:CircleAvatar(backgroundColor:const Color(0xFFE8F0FF),child:const Icon(Icons.swap_horiz,color:blue)),title:Text(money(t['amount']),style:const TextStyle(fontWeight:FontWeight.bold)),subtitle:Text('${t['sourceAccount']} → ${t['targetAccount']}\n${t['description']??''}'),isThreeLine:true,trailing:const Icon(Icons.chevron_right),onTap:()=>Navigator.push(context,MaterialPageRoute(builder:(_)=>TransactionDetailPage(id:t['id'] as int)))));
+    return Card(child:ListTile(leading:const CircleAvatar(backgroundColor:Color(0xFFE8F0FF),child:Icon(Icons.swap_horiz,color:blue)),title:Text(money(t['amount']),style:const TextStyle(fontWeight:FontWeight.bold)),subtitle:Text('${t['sourceAccount']} → ${t['targetAccount']}\n${t['description']??''}'),isThreeLine:true,trailing:const Icon(Icons.chevron_right),onTap:()=>Navigator.push(context,MaterialPageRoute(builder:(_)=>TransactionDetailPage(id:t['id'] as int)))));
   })));
 }
 
